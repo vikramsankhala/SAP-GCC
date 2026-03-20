@@ -1,0 +1,22 @@
+# Render Blueprint - Vikram Sankhala Portfolio
+# Deploy as Static Site on Render
+# https://render.com/docs/static-sites
+
+services:
+  - type: web
+    name: vikram-sankhala-portfolio
+    runtime: static
+    # No build step - pure HTML/CSS/JS
+    buildCommand: echo "Deploying static site"
+    staticPublishPath: ./website
+    # Optional: enable preview deployments for PRs
+    previews:
+      generation: automatic
+    # Security headers
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: sameorigin
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
