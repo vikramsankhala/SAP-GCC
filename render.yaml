@@ -1,22 +1,16 @@
 # Render Blueprint - Vikram Sankhala Portfolio
-# Deploy as Static Site on Render
-# https://render.com/docs/static-sites
+# Web service with Flask + Anthropic AI Assistant
+# https://render.com/docs/web-services
 
 services:
   - type: web
     name: vikram-sankhala-portfolio
-    runtime: static
-    # No build step - pure HTML/CSS/JS
-    buildCommand: echo "Deploying static site"
-    staticPublishPath: ./website
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false  # Add your API key in Render Dashboard
     # Optional: enable preview deployments for PRs
     previews:
       generation: automatic
-    # Security headers
-    headers:
-      - path: /*
-        name: X-Frame-Options
-        value: sameorigin
-      - path: /*
-        name: X-Content-Type-Options
-        value: nosniff

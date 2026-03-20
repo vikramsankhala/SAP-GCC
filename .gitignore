@@ -12,6 +12,10 @@ __pycache__/
 .venv/
 venv/
 
+# Secrets - NEVER commit
+.env
+.env.local
+
 # Documents (optional - keep if you want them in repo)
 # *.pptx
 # *.docx
