@@ -54,11 +54,6 @@ def index():
     return send_from_directory(WEBSITE_DIR, "index.html")
 
 
-@app.route("/<path:path>")
-def serve_static(path):
-    return send_from_directory(WEBSITE_DIR, path)
-
-
 @app.route("/api/chat", methods=["POST"])
 def chat():
     """Anthropic Claude API chat endpoint."""
@@ -105,5 +100,11 @@ def chat():
         }), 500
 
 
+@app.route("/<path:path>")
+def serve_static(path):
+    return send_from_directory(WEBSITE_DIR, path)
+
+
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+    port = int(os.environ.get("PORT") or 5000)
+    app.run(host="0.0.0.0", port=port, debug=False)
