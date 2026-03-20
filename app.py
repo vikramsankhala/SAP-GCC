@@ -107,4 +107,8 @@ def serve_static(path):
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT") or 5000)
-    app.run(host="0.0.0.0", port=port, debug=False)
+    if os.environ.get("RENDER"):
+        from waitress import serve
+        serve(app, host="0.0.0.0", port=port)
+    else:
+        app.run(host="0.0.0.0", port=port, debug=False)
