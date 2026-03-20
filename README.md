@@ -5,6 +5,7 @@ A comprehensive, professional portfolio website showcasing SAP AI capabilities, 
 ## Contents
 
 - **About** – Executive summary and target role
+- **Videos** – 111+ curated SAP YouTube videos (searchable, filterable by category)
 - **SAP AI Landscape** – Joule, AI Core, RAG, Multi-Agent Orchestration
 - **Solutioning** – Pharma GCC SAP BI kickoff approach
 - **Use Cases** – Commercial, medical, and operations analytics
@@ -38,6 +39,14 @@ A comprehensive, professional portfolio website showcasing SAP AI capabilities, 
 2. Set **Publish Directory** to `website`
 3. Leave **Build Command** empty or use `echo "OK"`
 4. Deploy
+
+## Test Video Links
+
+All 111 YouTube video links are validated. Run the test script:
+
+```bash
+python test_video_links.py
+```
 
 ## Local Development
 
