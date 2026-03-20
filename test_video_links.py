@@ -16,13 +16,16 @@ def load_videos():
     if VIDEOS_JSON.exists():
         with open(VIDEOS_JSON, encoding="utf-8") as f:
             return json.load(f)
-    # Parse from videos.js - extract array between [ and ]
+    # Parse from videos.js - extract array between [ and ], strip // comments
     with open(VIDEOS_JS, encoding="utf-8") as f:
         content = f.read()
     start = content.find("[")
     end = content.rfind("]") + 1
     if start >= 0 and end > start:
-        return json.loads(content[start:end])
+        arr_content = content[start:end]
+        import re
+        arr_content = re.sub(r'//[^\n]*', '', arr_content)
+        return json.loads(arr_content)
     return []
 
 def test_url(url, timeout=10):
